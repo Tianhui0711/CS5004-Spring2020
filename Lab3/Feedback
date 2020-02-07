@@ -1,0 +1,25 @@
+Good job on this Fractions Lab! Here is some feedback on things to keep in mind.
+
+1. When you are throwing exceptions, please ensure you are throwing the appropriate one. The fraction class should be 
+throwing IlleagalArgumentException not IllegalAccess Exception. We are not trying to provide access to the fraction, 
+it is trying to be set up with the incorrect arguments.
+
+2. The requirements for toString asked for simplification of the fraction. If you expected the fraction to be already 
+simplified, we would expect a comment stating that. If you ran out of time, a comment should state that simplification
+is needed. If a requirement is not in your code or comments, reviewers are unaware if you saw the requirement.
+
+3. Your equals function will not work if the fractions are the same unsimplified (aka 1/2 vs 4/8). They are technically equal.
+However, if you interpret it to mean exactly the same, clarification should be provided in the comments.
+
+4. During your addition method I was really looking for more comments in general. It took walking through your code to realize 
+that you are completing simplification after the addition. However, great job going above and beyond the requirements. 
+Simplification was not required for this method.
+
+5. During testing, your catch statements should only print the error that was caught. If you print just a statement of the error 
+you expected, you may miss a problem you were not anticipating. Use: System.out.println(e)
+
+6. During testing, java's equals and assertEquals should not be used when comparing objects. The data/variables within should be 
+compared. Try to use the toString or the equals method you wrote.
+
+7. For code that may be used multiple times (simplification or cross multiplication) it is recommended to create another method. 
+Your code only used each once, but each could be used in multiple places.
