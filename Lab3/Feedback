@@ -23,3 +23,7 @@ compared. Try to use the toString or the equals method you wrote.
 
 7. For code that may be used multiple times (simplification or cross multiplication) it is recommended to create another method. 
 Your code only used each once, but each could be used in multiple places.
+
+
+
+Feedback provided by: Chandra Davis davis.chan@husky.neu.edu
