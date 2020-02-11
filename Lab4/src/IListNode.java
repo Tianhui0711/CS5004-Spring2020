@@ -34,15 +34,9 @@ public interface IListNode {
     void addBack(IListNode node);
 
     /**
-     * Only clone the string of the node, the next node is set to null
-     * @return the copy of this node
+     * Only copy the string of the node
+     * The next node is set to null, which makes it easy to add a new node
+     * @return a new node
      */
     IListNode cloneNode();
-
-    /**
-     * Check if the two node are the same;
-     * @param o the other node
-     * @return true if they are the same, false other wise
-     */
-    boolean equals(Object o);
 }

@@ -15,21 +15,25 @@ public class WordNodeTest {
 
     @Test
     public void countLetters() {
+        // check the letters in word1 is 7
         assertEquals(7, word1.countLetters());
     }
 
     @Test
     public void getString() {
+        // check the string of word1 is "evening"
         assertEquals("evening", word1.getString());
     }
 
     @Test
     public void getNext() {
+        // check the next node of word1 is word2
         assertTrue(word1.equals(word2.getNext()));
     }
 
     @Test
     public void isWord() {
+        // check word1 is a WordNode
         assertTrue(word1.isWord());
     }
 
@@ -37,12 +41,14 @@ public class WordNodeTest {
     public void addBack() {
         IListNode word3 = new WordNode("everyone");
         word1.addBack(word3);
+        // check word3 is been add to word1 successfully
         assertTrue(word3.equals(word1.getNext()));
     }
 
     @Test
     public void cloneNode() {
         IListNode word3 = word1.cloneNode();
-        assertTrue(word3.equals(word1));
+        // check the cloned word3 is the same as word1
+        assertEquals(word3.getString(), word1.getString());
     }
 }

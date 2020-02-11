@@ -18,7 +18,7 @@ public class PunctuationNode implements IListNode {
 
     /**
      * Overload the constructor
-     * when the PunctuationNode is not at the end of a Sentence
+     * If the PunctuationNode is not at the end of a Sentence
      * @param punc the punctuation mark
      * @param next the next IListNode
      */
@@ -68,32 +68,11 @@ public class PunctuationNode implements IListNode {
     }
 
     /**
-     * Only clone the string of the node, the next node is set to null
-     * @return the copy of this node
+     * Only copy the string of the node
+     * The next node is set to null, which makes it easy to add the next node
+     * @return a new PunctuationNode which copies the punctuation mark of the original PunctuationNode
      */
     public IListNode cloneNode() {
         return new PunctuationNode(this.punc);
-    }
-
-    /**
-     * Check if the two node are the same;
-     * @param o the other node
-     * @return true if they are the same, false other wise
-     */
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        PunctuationNode other = (PunctuationNode) o;
-        IListNode p1 = this;
-        IListNode p2 = other;
-        while (p1.getNext() != null) {
-            if (p1.getString() != p2.getString()) {
-                return false;
-            }
-            p1 = p1.getNext();
-            p2 = p2.getNext();
-        }
-        return true;
     }
 }

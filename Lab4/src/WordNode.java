@@ -19,7 +19,7 @@ public class WordNode implements IListNode {
 
     /**
      * Overload the constructor
-     * when the WordNode is not at the end of a Sentence
+     * If the WordNode is not at the end of a Sentence
      * @param word the string of the word
      * @param next the next node
      */
@@ -69,32 +69,11 @@ public class WordNode implements IListNode {
     }
 
     /**
-     * Only clone the string of the node, the next node is set to null
-     * @return the copy of this node
+     * Only copy the string of the node
+     * The next node is set to null, which makes it easy to add the next node
+     * @return a new WordNode which copies the string of the original WordNode
      */
     public IListNode cloneNode() {
         return new WordNode(this.word);
-    }
-
-    /**
-     * Check if the two node are the same;
-     * @param o the other node
-     * @return true if they are the same, false other wise
-     */
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        WordNode other = (WordNode) o;
-        IListNode p1 = this;
-        IListNode p2 = other;
-        while (p1.getNext() != null) {
-            if (p1.getString() != p2.getString()) {
-                return false;
-            }
-            p1 = p1.getNext();
-            p2 = p2.getNext();
-        }
-        return true;
     }
 }

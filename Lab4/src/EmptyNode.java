@@ -59,23 +59,10 @@ public class EmptyNode implements IListNode{
     }
 
     /**
-     * Only clone the string of the node, the next node is set to null
-     * @return the copy of this node
+     * Return the same new EmptyNode
+     * @return a new EmptyNode
      */
     public IListNode cloneNode() {
         return new EmptyNode();
-    }
-
-    /**
-     * Check if the two node are the same;
-     * @param o the other node
-     * @return true if they are the same, false other wise
-     */
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        EmptyNode other = (EmptyNode) o;
-        return this.getString() == other.getString() && this.next == other.next;
     }
 }

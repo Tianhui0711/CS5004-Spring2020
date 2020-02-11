@@ -8,14 +8,6 @@ public class Sentence {
 
     /**
      * Construct a Sentence
-     * The head of the Sentence is defaulted as null
-     */
-    private Sentence() {
-        this.head = null;
-    }
-
-    /**
-     * Overload the constructor
      * @param head the head of the Sentence
      */
     public Sentence(IListNode head) {
@@ -31,6 +23,7 @@ public class Sentence {
         int sum = 0;
         IListNode p = head;
         while (p.getNext() != null) {
+            // if the node is a WordNode, it will be counted.
             if (p.isWord()) {
                 sum ++;
             }
@@ -48,6 +41,7 @@ public class Sentence {
         String word = "";
         IListNode p = head;
         while (p.getNext() != null) {
+            // if the node is a WordNode, its length will be compared
             if (p.isWord()) {
                 if (p.countLetters() > longest) {
                     longest = p.countLetters();
@@ -68,6 +62,8 @@ public class Sentence {
     public String toString() {
         IListNode p = head;
         String result = p.getString();
+        // this loop counties until the node is an EmptyNode
+        // add all words and punctuation marks to the string of sentence
         while (p.getNext() != null) {
             p = p.getNext();
             if (p.isWord()) {
@@ -76,7 +72,9 @@ public class Sentence {
                 result += p.getString();
             }
         }
+        // find the last character of the string which just got
         char last = result.charAt(result.length()-1);
+        // if the last character is a letter, add a period to the string of sentence
         if (Character.isLetter(last)) {
             result += ".";
         }
@@ -89,10 +87,13 @@ public class Sentence {
      */
     public Sentence clone() {
         IListNode p1 = this.head;
+        // create a new Sentence
         Sentence cloneS = new Sentence(p1.cloneNode());
         IListNode p2 = cloneS.head;
         while (p1.getNext() != null) {
             p1 = p1.getNext();
+            // clone nodes from the original sentence
+            // keep adding cloned nodes to the new Sentence
             p2.addBack(p1.cloneNode());
             p2 = p2.getNext();
         }
@@ -101,41 +102,21 @@ public class Sentence {
 
     /**
      * Merge two sentences into a single sentence
-     * the original lists will not be unchanged
+     * the original lists will be unchanged
      * @param other the other sentence need to be merged
      * @return the merged new sentence
      */
     public Sentence merge(Sentence other) {
-        Sentence mergeS = new Sentence(head);
-        Sentence mergeS2 = new Sentence(other.head);
+        // create a new Sentence
+        Sentence mergeS = this.clone();
+        Sentence mergeS2 = other.clone();
         IListNode p = mergeS.head;
-        IListNode p2 = mergeS2.head;
+        // Move the node to second last node(the node before the last EmptyNode)
         while (p.getNext().getString() != "") {
             p = p.getNext();
         }
-        p.addBack(p2);
+        // link the second last node to the head of the other Sentence
+        p.addBack(mergeS2.head);
         return mergeS;
-    }
-
-    /**
-     * Compare two sentence, check if they are the same
-     * @param o the other sentence
-     * @return true if they are the same, false otherwise
-     */
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Sentence other = (Sentence) o;
-        IListNode p1 = this.head;
-        IListNode p2 = other.head;
-        while (p1.getNext() != null) {
-            if (p1.getString() != p2.getString()) {
-                return false;
-            }
-            p1 = p1.getNext();
-            p2 = p2.getNext();
-        }
-        return true;
     }
 }
