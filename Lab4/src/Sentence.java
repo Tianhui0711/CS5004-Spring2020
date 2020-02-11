@@ -7,7 +7,14 @@ public class Sentence {
     private IListNode head;
 
     /**
-     * Construct a Sentence
+     * Construct a empty Sentence
+     */
+    public Sentence() {
+        this.head = new EmptyNode();
+    }
+
+    /**
+     * Overload the constructor when the head is provided
      * @param head the head of the Sentence
      */
     public Sentence(IListNode head) {
@@ -35,6 +42,8 @@ public class Sentence {
     /**
      * Determines and returns the longest word in a sentence
      * @return the string of the longest word in a sentence
+     *          if the sentence contains no words
+     *          it will return an empty string.
      */
     public String longestWord() {
         int longest = 0;
@@ -110,6 +119,10 @@ public class Sentence {
         // create a new Sentence
         Sentence mergeS = this.clone();
         Sentence mergeS2 = other.clone();
+        // if this Sentence is empty, then the merged sentence is the other Sentence
+        if (mergeS.head.getString() == "") {
+            return mergeS2;
+        }
         IListNode p = mergeS.head;
         // Move the node to second last node(the node before the last EmptyNode)
         while (p.getNext().getString() != "") {

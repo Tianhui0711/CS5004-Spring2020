@@ -29,6 +29,11 @@ public class SentenceTest {
     public void longestWord() {
         // check the longest word in the Sentence s is "everyone"
         assertEquals("everyone", s.longestWord());
+
+        // check the longest word is an empty string
+        // when the sentence contains no words
+        Sentence s2 = new Sentence();
+        assertEquals("", s2.longestWord());
     }
 
     @Test
@@ -67,5 +72,11 @@ public class SentenceTest {
         // check if Sentence s and Sentence s2 are merged successfully
         // the string of the merged Sentence s3 should be "Good morning! Hello everyone!"
         assertEquals("Good morning! Hello everyone!", s3.toString());
+
+        // when the Sentence s4 is empty
+        // check the merged Sentence s5 has the same string with s
+        Sentence s4 = new Sentence();
+        Sentence s5 = s4.merge(s);
+        assertEquals("Hello everyone!", s5.toString());
     }
 }
