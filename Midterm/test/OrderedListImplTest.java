@@ -58,7 +58,7 @@ public class OrderedListImplTest {
         node2.addNext(new Node(5));
         node2.getNext().addNext(new Node(6));
         OrderedListImpl list2 = new OrderedListImpl(node2, 4);
-
+        assertEquals("[1 2 3 4 5 6 ??]", list.merge(list2).toString());
     }
 
     @Test
