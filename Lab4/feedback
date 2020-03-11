@@ -1,0 +1,21 @@
+
+Good job on this Sentence Lab! All tests have been passed :) Here is some feedback.
+
+1.Algorithm works well 
+
+2.Overall comments make sense and look good.
+
+3.In EmptyNode.java, IllegalArgumentException is thrown when a new word is added to an empty node, 
+but actually it makes more sense to return a new word node or punctuation node for this function. 
+Even Though an exception is expected to be thrown here, be careful using IllegalArgumentException. 
+IllegalArgumentException should be thrown to indicate that a method has been passed an illegal or 
+inappropriate argument(per api doc for IllegalArgumentException). Here, you may want to throw 
+Exception("Cannot add a word to empty node") to better explain this situation.
+
+4.Can you try to pass “String cargo” into the addback function? You may need to refer to the professor's 
+example for more details such as adding a step to check cargo is a word or a punctuation.
+
+Feedback provided by: Xintong(Linda) Liu liu.xinto@husky.neu.edu
+
+
+
