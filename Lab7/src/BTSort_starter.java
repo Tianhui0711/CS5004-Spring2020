@@ -1,5 +1,5 @@
 /**
-Implement a sorting program using binary tree
+ * Implement a sorting program using binary tree
  */
 
 import java.util.Arrays;
@@ -39,8 +39,8 @@ class BTSort // starter code
     }
 
     /**
-     * A helper function to help insert val in order
-     * @param root the node which should be inserted
+     * A helper function to help insert val recursively
+     * @param root the node which should be inserted to
      * @param val the value
      * @return the node
      */

@@ -1,7 +1,9 @@
 /**
-1. Use Generics to implement BTSort
-2. Add a new method which returns a sorted copy of the array
+ * Optional part:
+ * 1. Use Generics to implement BTSort
+ * 2. Add a new method which returns a sorted copy of the array
  */
+
 import java.util.ArrayList;
 
 public class BTSort_Generics<T extends Comparable> {
@@ -20,14 +22,27 @@ public class BTSort_Generics<T extends Comparable> {
 
     private Node root;
 
+    /**
+     * Constructor
+     */
     public BTSort_Generics() {
         root = null;
     }
 
+    /**
+     * Insert a new value to the sorting tree
+     * @param val the inserted value
+     */
     public void insert(T val) {
         root = insertRec(root, val);
     }
 
+    /**
+     * A helper function to help insert val in order
+     * @param root the node which should be inserted
+     * @param val the value
+     * @return the node
+     */
     public Node insertRec(Node root, T val) {
         if (root == null)
         {
@@ -45,6 +60,10 @@ public class BTSort_Generics<T extends Comparable> {
         return root;
     }
 
+    /**
+     * Print the ordered array
+     * @param root the root node
+     */
     public void printInOrderRec(Node root) {
         if (root != null)
         {
@@ -79,6 +98,10 @@ public class BTSort_Generics<T extends Comparable> {
         return array;
     }
 
+    /**
+     * Create an iterator to insert every value in the array
+     * @param arr the original array
+     */
     public void bTreeIns(T[] arr)
     {
         for (T value : arr) {
@@ -87,6 +110,7 @@ public class BTSort_Generics<T extends Comparable> {
     }
 
     // main method to test on 1-2 examples
+    // only test the new method which returns a new sorted array
     public static void main(String[] args)
     {
         //test 1: Use Array of Integer
@@ -94,6 +118,7 @@ public class BTSort_Generics<T extends Comparable> {
         Integer[] arr1 = new Integer[]{3,2,1,4,7,6};
         tree.bTreeIns(arr1);
         ArrayList sortedArray = tree.sortedArray();
+
         System.out.print("The sorted array is: ");
         System.out.println(sortedArray.toString());
 
