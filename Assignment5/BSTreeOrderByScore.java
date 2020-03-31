@@ -1,22 +1,32 @@
+/**
+ * Implement a binary search tree ordered by the players' score
+ */
+
 import java.util.List;
 
 public class BSTreeOrderByScore {
-    private class BSTNode {
+    // create a new tree node
+    private class BSTNode extends Node<BSTNode>{
         Player player;
-        BSTNode left;
-        BSTNode right;
         int rCount;
 
+        /**
+         * Construct a node
+         * @param player the player
+         */
         public BSTNode(Player player) {
+            super();
             this.player = player;
-            this.left = null;
-            this.right = null;
-            this.rCount = 0;
+            this.rCount = 0;    // count numbers of nodes that are on its right
         }
     }
 
     BSTNode root;
 
+    /**
+     * Construct a binary search tree ordered by player score
+     * @param list the list of Players
+     */
     public BSTreeOrderByScore(List list) {
         for (Object p: list) {
             Player player = (Player) p;
@@ -24,12 +34,20 @@ public class BSTreeOrderByScore {
         }
     }
 
-    // insert new Player to the binary search tree ordered by player score
+    /**
+     * Insert new Player to the tree ordered by player score
+     * @param p the Player
+     */
     public void insert(Player p) {
         root = insert(root, p);
     }
 
-    // helper method: insert new Player to the binary search tree ordered by player score
+    /**
+     * Traverse the tree and help insert new Player to the tree
+     * @param root the root node
+     * @param p the Player
+     * @return the root node
+     */
     public BSTNode insert(BSTNode root, Player p) {
         if (root == null) {
             root = new BSTNode(p);
@@ -44,10 +62,19 @@ public class BSTreeOrderByScore {
         return root;
     }
 
+    /**
+     * Get the player who has the maximum score
+     * @return the player id
+     */
     public int getMax() {
         return getMax(root);
     }
 
+    /**
+     * Traverse the tree and find the player who has the maximum score
+     * @param node the node which to start traverse
+     * @return the id of the player
+     */
     public int getMax(BSTNode node) {
         while (node.right != null) {
             node = node.right;
@@ -55,7 +82,11 @@ public class BSTreeOrderByScore {
         return node.player.playerId;
     }
 
-    // find the min node under the deleted node
+    /**
+     * Find the player who has the minimum score under the deleted node
+     * @param node the deleted node
+     * @return the player node with the minimum score
+     */
     public Player getMin(BSTNode node) {
         while (node.left != null) {
             node = node.left;
@@ -63,12 +94,24 @@ public class BSTreeOrderByScore {
         return node.player;
     }
 
-    // found the original player score in the binary search tree ordered by id
+    /**
+     * Find the original player score in the binary search tree ordered by id
+     * @param tree the original tree ordered by id
+     * @param id the id want to find
+     * @return the score of the player with the search id
+     */
     public int search(BSTreeOrderById tree, int id) {
         return tree.search(id);
     }
 
-    // update the tree if the score is higher
+    /**
+     * If the score is higher than the existed score, delete the original node and
+     * insert the node with new score; otherwise, do nothing
+     * @param tree the original tree ordered by id
+     * @param id the id want to find
+     * @param score the score of the player with the search id
+     * @return true if updated successfully, false otherwise
+     */
     public boolean update(BSTreeOrderById tree, int id, int score) {
         int originalScore = search(tree, id);
         if (originalScore < score) {
@@ -79,6 +122,12 @@ public class BSTreeOrderByScore {
         return false;
     }
 
+    /**
+     * Delete the original node and rearrange the tree
+     * @param node the deleted node
+     * @param score the player score
+     * @return the player node
+     */
     public BSTNode delete(BSTNode node, int score) {
         if (node == null) {
             return null;
@@ -87,6 +136,7 @@ public class BSTreeOrderByScore {
         if (score < node.player.score) {
             node.left = delete(node.left, score);
         } else if (score > node.player.score) {
+            node.rCount--;
             node.right = delete(node.right, score);
         } else {
             // if the node does not have any left child
@@ -106,12 +156,21 @@ public class BSTreeOrderByScore {
         return node;
     }
 
-    // get the player who is at the required position
+    /**
+     * Get the player who is at the required position
+     * @param k the position index
+     * @return the player id
+     */
     public int getKthPosition(int k) {
         return getKthPosition(root, k).playerId;
     }
 
-    // get the player who is at the required position
+    /**
+     * Traverse the tree and find the kth position player
+     * @param node node start to traverse
+     * @param k the position index
+     * @return the player object
+     */
     public Player getKthPosition(BSTNode node, int k) {
         while (node != null) {
             if (node.rCount + 1 == k) {
