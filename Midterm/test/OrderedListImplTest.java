@@ -58,13 +58,14 @@ public class OrderedListImplTest {
         node2.addNext(new Node(5));
         node2.getNext().addNext(new Node(6));
         OrderedListImpl list2 = new OrderedListImpl(node2, 4);
-        assertEquals("[1 2 3 4 5 6 ??]", list.merge(list2).toString());
+        list2.merge(list);
+        assertEquals("[1 2 3 4 5 6 ??]", list2.merge(list).toString());
     }
 
     @Test
     public void remove() {
-        list.remove(2);
-        assertEquals("[1 3 ??]", list.toString());
+        list.remove(3);
+        assertEquals("[1 2 ??]", list.toString());
     }
 
     @Test
@@ -73,7 +74,7 @@ public class OrderedListImplTest {
         assertEquals("[1 ???]", list.toString());
 
         list.removeAll(1);
-        assertTrue(list.isEmpty());
+        assertEquals("[????]", list.toString());
     }
 
     @Test
@@ -90,9 +91,16 @@ public class OrderedListImplTest {
     @Test
     public void testToString() {
         assertEquals("[1 2 3 ?]", list.toString());
+        list.removeAll(1);
+        assertEquals("[????]", list.toString());
     }
 
     @Test
     public void testEquals() {
+        node2 = new Node(1);
+        node2.addNext(new Node(2));
+        node2.getNext().addNext(new Node(3));
+        OrderedListImpl list2 = new OrderedListImpl(node2, 4);
+        assertEquals(list, list2);
     }
 }

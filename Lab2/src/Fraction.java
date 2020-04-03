@@ -6,13 +6,13 @@ public class Fraction {
      * Create a new Fraction with the numerator and the denominator.
      * @param num
      * @param deno
-     * @throws IllegalAccessException
+     * @throws IllegalArgumentException
      */
 
-    public Fraction(int num, int deno) throws IllegalAccessException {
+    public Fraction(int num, int deno) throws IllegalArgumentException {
         this.num = num;
         if (deno <= 0) {
-            throw new IllegalAccessException("The denominator must be positive.");
+            throw new IllegalArgumentException("The denominator must be positive.");
         }
         this.deno = deno;
     }
@@ -67,7 +67,7 @@ public class Fraction {
      * @return the summary as a fraction project
      * @throws IllegalAccessException
      */
-    public Fraction add(Fraction other) throws IllegalAccessException {
+    public Fraction add(Fraction other) throws IllegalArgumentException {
         int mult1 = this.num * other.deno + other.num * this.deno;
         int mult2 = this.deno * other.deno;
 
@@ -111,7 +111,7 @@ public class Fraction {
     }
 
     // Test part.
-    public static void main (String[] args) throws IllegalAccessException {
+    public static void main (String[] args) throws IllegalArgumentException, IllegalAccessException {
         // Create three new fraction projects.
         Fraction frac1 = new Fraction(1, 2);
         Fraction frac2 = new Fraction(3, 4);
@@ -121,8 +121,8 @@ public class Fraction {
         // Catch the error and throw a message.
         try {
             Fraction frac4 = new Fraction(1,-2);
-        } catch (IllegalAccessException e) {
-            System.out.println("The denominator must be positive.");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Exception caught: " + e);
         }
 
         // Test the toDouble() method.

@@ -12,7 +12,7 @@ public class FractionTest {
 
 
     @Before
-    public void setUp() throws IllegalAccessException {
+    public void setUp() throws IllegalArgumentException {
         // Create new fractions
         frac1 = new Fraction(1, 2);
         frac2 = new Fraction(3, 4);
@@ -22,8 +22,8 @@ public class FractionTest {
         // Catch the error and throw a message.
         try {
             frac4 = new Fraction(1,-2);
-        } catch (IllegalAccessException e) {
-            System.out.println("The denominator must be positive.");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Exception caught: " + e);
         }
     }
 
@@ -61,7 +61,7 @@ public class FractionTest {
         try {
             Fraction frac5 = new Fraction(0,1);
             frac5.reciprocal();
-        } catch (IllegalAccessException e) {
+        } catch (IllegalArgumentException e) {
             System.out.println("The reciprocal is 0.");
         }
     }

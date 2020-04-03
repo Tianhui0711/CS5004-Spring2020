@@ -9,10 +9,10 @@ public class Fraction {
      * @throws IllegalAccessException
      */
 
-    public Fraction(int num, int deno) throws IllegalAccessException {
+    public Fraction(int num, int deno) throws IllegalArgumentException {
         this.num = num;
         if (deno <= 0) {
-            throw new IllegalAccessException("The denominator must be positive.");
+            throw new IllegalArgumentException("The denominator must be positive.");
         }
         this.deno = deno;
     }
@@ -50,9 +50,9 @@ public class Fraction {
      * @return the reciprocal of the fraction
      * @throws IllegalAccessException
      */
-    public Fraction reciprocal() throws IllegalAccessException{
+    public Fraction reciprocal() throws IllegalArgumentException{
         if (this.num == 0) {
-            throw new IllegalAccessException("The reciprocal is 0.");
+            throw new IllegalArgumentException("The reciprocal is 0.");
         } else if (this.num < 0) {
             int newNum = -this.num;
             int newDeno = -this.deno;

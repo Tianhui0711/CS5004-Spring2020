@@ -63,11 +63,22 @@ public class OrderedListImpl implements OrderedList {
             }
         } else {
             Node p = head;
-            while (p.getValue() < val && p.getNext() != null) {
-                p = p.getNext();
+            if (p.getValue() > val) {
+                head = new Node(val);
+                head.addNext(p);
+            } else {
+                while (p.getValue() < val) {
+                    if (p.getNext() == null) {
+                        break;
+                    }
+                    if (p.getNext().getValue() > val) {
+                        break;
+                    }
+                    p = p.getNext();
+                }
+                Node newNext = new Node(val, p.getNext());
+                p.addNext(newNext);
             }
-            Node newNext = new Node(val,p.getNext());
-            p.addNext(newNext);
             return;
         }
     }
@@ -91,7 +102,7 @@ public class OrderedListImpl implements OrderedList {
 
     public void remove(int val) {
         if (val == head.getValue()) {
-            head = (Node) head.getNext();
+            head = head.getNext();
             return;
         }
 
@@ -145,14 +156,14 @@ public class OrderedListImpl implements OrderedList {
 
     @Override
     public String toString() {
-        if (head == null) {
+        if (head == null && lengthLimit == 0) {
             return "[]";
         }
 
         String s = "[";
         Node p = head;
         while (p != null) {
-            s += String.valueOf(p.getValue()) + " ";
+            s += p.getValue() + " ";
             p = p.getNext();
         }
         if (size() < lengthLimit) {

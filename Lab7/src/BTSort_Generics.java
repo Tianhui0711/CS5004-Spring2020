@@ -7,6 +7,11 @@
 import java.util.ArrayList;
 
 public class BTSort_Generics<T extends Comparable> {
+    /**
+     * Returns an iterator over elements of type {@code T}.
+     *
+     * @return an Iterator.
+     */
     private class Node<T extends Comparable>
     {
         T val;
@@ -108,6 +113,7 @@ public class BTSort_Generics<T extends Comparable> {
             insert(value);
         }
     }
+
 
     // main method to test on 1-2 examples
     // only test the new method which returns a new sorted array
