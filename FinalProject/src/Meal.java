@@ -1,3 +1,7 @@
+/**
+ * A model for Meal
+ */
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -13,7 +17,8 @@ public class Meal {
         this.pageEnd = pageEnd;
     }
 
-    // 爬取指定餐点类型、指定页数的食谱，并存到arraylist中
+    // crawl the recipe for the specific meal, specific pages of the website
+    // save the recipes in the Meal
     public void crawl() {
         ArrayList<String[]> allRecipe = new ArrayList<>();
         HTMLGetter m = new HTMLGetter(meal);
@@ -25,12 +30,12 @@ public class Meal {
         this.allRecipe = allRecipe;
     }
 
-    // 爬取结果写入csv
+    // save the result as csv file
     public void recordMeals() {
         CSVEditor.write(meal, allRecipe);
     }
 
-    // 随机抽取，进行推荐
+    // randomly choose the recipe from all the result
     public String randomChoose() {
         Random random = new Random();
         int i = random.nextInt(100);

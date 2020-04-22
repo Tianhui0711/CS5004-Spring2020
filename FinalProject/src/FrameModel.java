@@ -1,3 +1,7 @@
+/**
+ * A default model for all the Frames used in this crawler
+ */
+
 import javax.swing.*;
 import java.awt.*;
 

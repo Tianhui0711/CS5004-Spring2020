@@ -1,3 +1,7 @@
+/**
+ * Use Jsoup lib to help select elements and analyze the HTML context
+ */
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -5,24 +9,17 @@ import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
 
-/**
- * Use Jsoup selector to help analyze the HTML context and get what I want
- */
-
 public class HTMLParser {
     String html;
     Document document;
 
-    /**
-     * Construct a HTML Parser
-     */
-    // 接收已经get的html文本，进行清洗
+    // Construct a html Parser, get the html file
     public HTMLParser(String html) {
         this.html = html;
         this.document = Jsoup.parse(html);
     }
 
-    // 使用选择器先选择出每个页面上的所有菜谱,方便后面的分类筛选
+    // use the selector the select the elements contains all the recipes on the page
     public Elements analyze() {
         Elements infoGeneral = document.select("div.recipe.recipe-215-horizontal.pure-g.image-link.display-block");
         Elements info = infoGeneral.select("div.info.pure-u");
@@ -38,6 +35,7 @@ public class HTMLParser {
         return info;
     }
 
+    // get
     public ArrayList<String> getInfo(String mark) {
         Elements info = analyze().select(mark);
         ArrayList<String> infoList = new ArrayList<>();
@@ -47,11 +45,13 @@ public class HTMLParser {
         return infoList;
     }
 
+    // get the detailed name of the meal
     public ArrayList<String> getName() {
         ArrayList nameList = getInfo("[data-expose-tracking-url]");
         return nameList;
     }
 
+    // get the url of the recipe
     public ArrayList<String> getUrl() {
         ArrayList<String> urlList = new ArrayList<>();
         for (Element e: analyze()) {
@@ -61,23 +61,26 @@ public class HTMLParser {
         return urlList;
     }
 
+    // get the ingredient of the meal
     public ArrayList<String> getIngredient() {
         ArrayList ingredientList = getInfo(".ing.ellipsis");
         return ingredientList;
     }
 
+    // get the rating of the meal
     public ArrayList<String> getRating() {
         ArrayList ratingList = getInfo(".score.bold.green-font");
         return ratingList;
     }
 
+    // get the number of the reviewers
     public ArrayList<String> getReviewer() {
         ArrayList reviewerList = getInfo("span[class~=bold\\sscore]");
         return reviewerList;
     }
 
-    // 把每个菜谱输出成array的形式
-    // 改用string[] 方便和后面衔接
+    // Save all the information of one meal in a array of string
+    // Return the arraylist of the array of string, which contains all the information of each page
     public ArrayList<String[]> getMeals() {
         ArrayList<String[]> mealTable = new ArrayList();
         int size = getName().size();
@@ -92,10 +95,4 @@ public class HTMLParser {
         }
         return mealTable;
     }
-
-//    public static void main(String[] args) {
-//        HTMLGetter html = new HTMLGetter("breakfast");
-//        String h = html.getHTML(1);
-//        HTMLParser p = new HTMLParser(h);
-//    }
 }

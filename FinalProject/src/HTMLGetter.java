@@ -16,12 +16,9 @@ public class HTMLGetter {
     String meal;
     String url;
 
-    /**
-     * Construct a HTMLGetter
-     */
+    // set the default url to get for each meals
     public HTMLGetter(String meal) {
         this.meal = meal;       // breakfast|lunch|dinner|dessert
-        // 大小写是否区分？或者用一个字母代替？
         if (meal == "breakfast") {
             this.url = "https://www.xiachufang.com/category/40071/?page=";
         } else if (meal == "lunch" || meal == "dinner") {
@@ -31,12 +28,7 @@ public class HTMLGetter {
         }
     }
 
-    /**
-     * Get the HTML of the given page
-     * @param page
-     * @return
-     */
-    // 是否需要处理ip的问题？
+    // Get the HTML of the given page
     public String getHTML(int page) {
         try {
             // create httpclient, like opening a browser
@@ -62,9 +54,4 @@ public class HTMLGetter {
         }
         return null;
     }
-
-//    public static void main(String[] args) {
-//        HTMLGetter html = new HTMLGetter("breakfast");
-//        System.out.println(html.getHTML(1));
-//    }
 }

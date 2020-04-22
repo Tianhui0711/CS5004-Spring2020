@@ -1,3 +1,7 @@
+/**
+ * The frame for the Download page, extending the FrameModel
+ */
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -23,8 +27,4 @@ public class FrameModelForDownload extends FrameModel {
         window.pack();
         window.setVisible(true);
     }
-
-//    public static void main(String[] args) {
-//        FrameForDownload f = new FrameForDownload();
-//    }
 }

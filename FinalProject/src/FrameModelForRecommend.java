@@ -1,3 +1,7 @@
+/**
+ * The frame for the Recipe Recommend, extending the FrameModel
+ */
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -19,6 +23,7 @@ public class FrameModelForRecommend extends FrameModel {
 
         JTextArea[] mealList = new JTextArea[]{breakfast, lunch, dinner,dessert};
 
+        // add recipes to the panel
         for (int i = 0; i < 4; i++) {
             mealList[i] = new JTextArea(6,2);
             mealList[i].setText(recommend[i]);
@@ -31,8 +36,4 @@ public class FrameModelForRecommend extends FrameModel {
         window.pack();
         window.setVisible(true);
     }
-
-//    public static void main(String[] args) {
-//        FrameForRecommend f = new FrameForRecommend();
-//    }
 }
