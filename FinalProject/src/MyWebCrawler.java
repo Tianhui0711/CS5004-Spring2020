@@ -13,6 +13,6 @@
 public class MyWebCrawler {
     // launch the GUI window and start the program
     public static void main(String[] args) {
-        FrameModelForStart r = new FrameModelForStart();
+        FrameForStart r = new FrameForStart();
     }
 }

@@ -5,14 +5,14 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class FrameModelForRecommend extends FrameModel {
+public class FrameForRecommendation extends FrameDefault {
     JTextArea breakfast;
     JTextArea lunch;
     JTextArea dinner;
     JTextArea dessert;
     CrawlerController crawlerController;
 
-    public FrameModelForRecommend() {
+    public FrameForRecommendation() {
         super();
         window.setTitle("Daily Recipes Recommendation");
         label.setText("Today's Special:");
@@ -31,7 +31,7 @@ public class FrameModelForRecommend extends FrameModel {
             panel.add(mealList[i]);
         }
 
-        panel.setLayout(new GridLayout(5, 1, 10, 10));
+        panel.setLayout(new GridLayout(5, 2, 10, 10));
 
         window.pack();
         window.setVisible(true);

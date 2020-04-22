@@ -7,12 +7,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class FrameModelForStart extends FrameModel {
+public class FrameForStart extends FrameDefault {
     JCheckBox download;
     JCheckBox recommend;
     JButton enter;
 
-    public FrameModelForStart() {
+    public FrameForStart() {
         super();
         window.setTitle("Daily Recipes Download and Recommendation");
         label.setText("--- Daily Recipes Download and Recommendation ---");
@@ -42,12 +42,12 @@ public class FrameModelForStart extends FrameModel {
         public void actionPerformed(ActionEvent e) {
             // open new windows according to the select status of the checkboxes
             if (download.isSelected() && ! recommend.isSelected()) {
-                FrameModelForDownload d = new FrameModelForDownload();
+                FrameForDownload d = new FrameForDownload();
             } else if (! download.isSelected() && recommend.isSelected()) {
-                FrameModelForRecommend r = new FrameModelForRecommend();
+                FrameForRecommendation r = new FrameForRecommendation();
             } else {
-                FrameModelForDownload d = new FrameModelForDownload();
-                FrameModelForRecommend r = new FrameModelForRecommend();
+                FrameForDownload d = new FrameForDownload();
+                FrameForRecommendation r = new FrameForRecommendation();
             }
         }
     }

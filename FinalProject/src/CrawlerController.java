@@ -19,7 +19,7 @@ public class CrawlerController {
     // download all the information for breakfast, lunch, dinner and dessert to csv file
     public void downLoadDiet() {
         for (Meal m : meals) {
-            m.recordMeals();
+            CSVEditor.write(m.name, m.allRecipe);;
         }
     }
 
