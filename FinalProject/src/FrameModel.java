@@ -1,13 +1,13 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class MyFrame extends JFrame {
+public class FrameModel extends JFrame {
     JFrame window;
     JPanel panel;
     JLabel label;
 
     // set the default frame and panel
-    public MyFrame() {
+    public FrameModel() {
         window = new JFrame();
         window.setSize(600,200);
         window.setLocationRelativeTo(null);

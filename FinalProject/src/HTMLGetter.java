@@ -12,14 +12,14 @@ import org.apache.hc.core5.http.io.entity.EntityUtils;
 
 import java.io.IOException;
 
-public class HTMLGetterImpl implements HTMLGetter{
+public class HTMLGetter {
     String meal;
     String url;
 
     /**
      * Construct a HTMLGetter
      */
-    public HTMLGetterImpl(String meal) {
+    public HTMLGetter(String meal) {
         this.meal = meal;       // breakfast|lunch|dinner|dessert
         // 大小写是否区分？或者用一个字母代替？
         if (meal == "breakfast") {

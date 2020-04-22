@@ -3,12 +3,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class FrameForStart extends MyFrame{
+public class FrameModelForStart extends FrameModel {
     JCheckBox download;
     JCheckBox recommend;
     JButton enter;
 
-    public FrameForStart() {
+    public FrameModelForStart() {
         super();
         window.setTitle("Daily Recipes Download and Recommendation");
         label.setText("--- Daily Recipes Download and Recommendation ---");
@@ -35,12 +35,12 @@ public class FrameForStart extends MyFrame{
         @Override
         public void actionPerformed(ActionEvent e) {
             if (download.isSelected() && ! recommend.isSelected()) {
-                FrameForDownload d = new FrameForDownload();
+                FrameModelForDownload d = new FrameModelForDownload();
             } else if (! download.isSelected() && recommend.isSelected()) {
-                FrameForRecommend r = new FrameForRecommend();
+                FrameModelForRecommend r = new FrameModelForRecommend();
             } else {
-                FrameForDownload d = new FrameForDownload();
-                FrameForRecommend r = new FrameForRecommend();
+                FrameModelForDownload d = new FrameModelForDownload();
+                FrameModelForRecommend r = new FrameModelForRecommend();
             }
         }
     }

@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.Random;
-
 /**
  * Author: Tianhui Li
  * Data: 04/18/2020
@@ -13,14 +10,14 @@ import java.util.Random;
  * and randomly choose recipes to form a daily diet. And then you don't have to worry about what to eat today!
  */
 
-public class MyCrawler {
+public class CrawlerController {
     Meal breakfast = new Meal("breakfast", 1, 5);
     Meal lunch = new Meal("lunch", 1, 5);
     Meal dinner = new Meal("dinner", 6, 10);
     Meal dessert = new Meal("dessert", 1, 5);
     Meal[] meals = new Meal[]{breakfast, lunch, dinner, dessert};
 
-    public MyCrawler() {
+    public CrawlerController() {
         for (Meal m : meals) {
             m.crawl();
         }

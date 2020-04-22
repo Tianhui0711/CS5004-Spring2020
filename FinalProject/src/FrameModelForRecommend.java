@@ -1,14 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class FrameForRecommend extends MyFrame{
+public class FrameModelForRecommend extends FrameModel {
     JTextArea breakfast;
     JTextArea lunch;
     JTextArea dinner;
     JTextArea dessert;
     CrawlerController crawlerController;
 
-    public FrameForRecommend() {
+    public FrameModelForRecommend() {
         super();
         window.setTitle("Daily Recipes Recommendation");
         label.setText("Today's Special:");

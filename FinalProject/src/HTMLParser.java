@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * Use Jsoup selector to help analyze the HTML context and get what I want
  */
 
-public class HTMLParserImpl implements HTMLParser{
+public class HTMLParser {
     String html;
     Document document;
 
@@ -17,7 +17,7 @@ public class HTMLParserImpl implements HTMLParser{
      * Construct a HTML Parser
      */
     // 接收已经get的html文本，进行清洗
-    public HTMLParserImpl(String html) {
+    public HTMLParser(String html) {
         this.html = html;
         this.document = Jsoup.parse(html);
     }

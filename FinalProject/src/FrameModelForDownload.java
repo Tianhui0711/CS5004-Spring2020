@@ -1,11 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class FrameForDownload extends MyFrame{
+public class FrameModelForDownload extends FrameModel {
     JLabel message;
     CrawlerController crawlerController;
 
-    public FrameForDownload() {
+    public FrameModelForDownload() {
         super();
         window.setTitle("Daily Recipes Download");
         label.setText("Recipes have been downloaded successfully!");
