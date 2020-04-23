@@ -10,7 +10,7 @@
  * and randomly choose recipes to form a daily diet. And then you don't have to worry about what to eat today!
  */
 
-public class MyWebCrawler {
+public class ProjectRunner {
     // launch the GUI window and start the program
     public static void main(String[] args) {
         FrameForStart r = new FrameForStart();
