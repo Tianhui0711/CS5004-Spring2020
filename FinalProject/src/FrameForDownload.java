@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class FrameForDownload extends FrameDefault {
     JLabel message;
-    CrawlerController crawlerController;
+    CrawlerControllerImpl crawlerControllerImpl;
 
     public FrameForDownload() {
         super();
@@ -18,8 +18,8 @@ public class FrameForDownload extends FrameDefault {
         message = new JLabel("Saved as breakfast.csv, lunch.csv, dinner.csv and " +
                 "dessert.csv in your folder.");
 
-        crawlerController = new CrawlerController();
-        crawlerController.downLoadDiet();
+        crawlerControllerImpl = new CrawlerControllerImpl();
+        crawlerControllerImpl.downLoadDiet();
 
         panel.add(message);
         panel.setLayout(new GridLayout(2, 1));

@@ -5,7 +5,7 @@
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Meal {
+public class Meal extends Thread{
     String name; // name of the meal: breakfast, lunch, dinner and dessert
     int pageStart;
     int pageEnd;
@@ -30,11 +30,6 @@ public class Meal {
         this.allRecipe = allRecipe;
     }
 
-    // save the result as csv file
-    public void recordMeals() {
-        CSVEditor.write(name, allRecipe);
-    }
-
     // randomly choose the recipe from all the result
     public String randomChoose() {
         Random random = new Random();
@@ -47,5 +42,10 @@ public class Meal {
         recipe += "Reviewer: " + randomMeal[3] + "\n";
         recipe += "Url: " + randomMeal[4];
         return recipe;
+    }
+
+    @Override
+    public void run() {
+        crawl();
     }
 }

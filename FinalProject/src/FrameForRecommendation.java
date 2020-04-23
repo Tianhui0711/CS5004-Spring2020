@@ -10,7 +10,7 @@ public class FrameForRecommendation extends FrameDefault {
     JTextArea lunch;
     JTextArea dinner;
     JTextArea dessert;
-    CrawlerController crawlerController;
+    CrawlerControllerImpl crawlerControllerImpl;
 
     public FrameForRecommendation() {
         super();
@@ -18,8 +18,8 @@ public class FrameForRecommendation extends FrameDefault {
         label.setText("Today's Special:");
         label.setHorizontalAlignment(SwingConstants.CENTER);
 
-        crawlerController = new CrawlerController();
-        String[] recommend = crawlerController.recipeCollect();
+        crawlerControllerImpl = new CrawlerControllerImpl();
+        String[] recommend = crawlerControllerImpl.recipeCollect();
 
         JTextArea[] mealList = new JTextArea[]{breakfast, lunch, dinner,dessert};
 
