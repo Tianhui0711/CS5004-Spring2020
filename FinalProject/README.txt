@@ -27,6 +27,7 @@ Find proper tools to crawl the website
 Analysis the HTML, since some of tags are missing, I need to complete them myself
 Figure out a reasonable structure of the whole project
 Add listener to the buttons and allow new windows to open a new window when click on the button 
+
 5. Things that can be improved
 What If the website has an anti-crawler protection - change the ip？ 
 Do more analysis on the crawled data 
